@@ -80,3 +80,37 @@ if __name__ == '__main__':
     print(sorted(tuple06))
 
     # 储存方式是不一样的
+    list06 = [1, 2, 3]
+    print(list06.__sizeof__())
+    tuple07 = (1, 2, 3)
+    print(tuple07.__sizeof__())
+
+    list07 = []
+    print(list07.__sizeof__())
+    list07.append(1)
+    print(list07.__sizeof__())
+    list07.append(2)
+    print(list07.__sizeof__())
+    list07.append(3)
+    print(list07.__sizeof__())
+    list07.append(4)
+    print(list07.__sizeof__())
+    list07.append(5)
+    print(list07.__sizeof__())
+
+    # 初始化，list所需时间 > tuple
+    # 通过索引查询的话，速度几乎一样
+
+    """
+    使用场景：
+        如果储存的数据不变，那指定元组
+        如果储存的数据可变，那指定列表
+        
+    总结：
+        相同点：
+            都是有序的；都是可以储存任意数据类型的集合；
+        不同点：
+            列表动态，长度可变；  元组静态，不可变。
+            列表储存空间大；
+            元组性能更优。
+    """
