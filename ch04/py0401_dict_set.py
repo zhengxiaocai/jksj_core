@@ -7,6 +7,14 @@
 """
 import timeit
 
+
+def find_product_price(products, product_id):
+    for product in products:
+        if product[0] == product_id:
+            return product[1]
+    return None
+
+
 if __name__ == '__main__':
     # 声明字典的几种形式
     d1 = {'name': 'jason', 'age': 20, 'gender': 'male'}
@@ -57,6 +65,31 @@ if __name__ == '__main__':
     except KeyError as e:
         print('KeyError')
 
+    # 集合增加 set.add(value)
+    s1.add(4)
+    print(s1)
+
+    # 集合删除 set.remove(value)
+    s1.remove(1)
+    print(s1)
+
+    # 排序
+    d4 = {'b': 1, 'a': 2, 'c': 10}
+    d4_sorted_by_key = sorted(d4.items(), key=lambda x: x[0])
+    d4_sorted_by_value = sorted(d4.items(), key=lambda x: x[1])
+    print(d4_sorted_by_key)
+    print(d4_sorted_by_value)
+
+    s3 = {3, 4, 2, 1}
+    print(sorted(s3))
+
+    # 实际应用，如果存在list里
+    products_list = [(143121312, 100), (432314553, 30), (32421912367, 150), (937153201, 30)]
+    print(f'The price of product 432314553 is {find_product_price(products_list, 432314553)}')
+
+    # 实际应用，在字典中
+    products_dict = {143121312: 100, 432314553: 30, 32421912367: 150}
+    print(f'The price of product 432314553 is {products_dict[432314553]}')
 
 
 
