@@ -1,116 +1,112 @@
 """
-元组 列表：一个可以放置任意类型数据的有序集合
-区别：
-    列表是动态的  mutable
-        长度大小不固定，可以随意增减
-    元素是静态的  immutable
-        长度大小固定，无法改变
+列表和元组：
+    相同点：都是一个可以放置任意数据类型的有序集合
 
+    不同点：
+        列表：动态的，长度大小不固定，可以任意的增删修改元素 mutable
+        元组：静态的，长度大小固定，不可以增删改元素
 """
 
 if __name__ == '__main__':
-    # 数据类型可以混合
-    list01 = [1, 2, 'hello', 'world']
+    list01 = [1, 2, 'Hello', 'world']  # 列表中同时包含int String
     print(list01)
 
-    tuple01 = ('jason', 22)
-    print(tuple01)
+    tup01 = ('jason', 22)
+    print(tup01)
 
-    # list改动，很简单
     list02 = [1, 2, 3, 4]
-    list02[3] = 40
+    list02[3] = 40  # 索引从零开始
     print(list02)
 
-    # tuple改动，报错 TypeError
-    tuple02 = (1, 2, 3, 4)
-    try:
-        tuple02[3] = 40
-    except TypeError as e:
-        print('tuple is immutable.')
-    # 如果非要改动，就给变量重新赋值
-    tuple02 = (1, 2, 3, 40)
+    tup02 = (1, 2, 3, 4)
+    # tup02[3] = 40     tuple object does not support item assignment
 
-    # 元组相加
-    tuple03 = tuple02 + (50,)
-    print(tuple03)
+    # 如果想对一个已有的元组进行改变，只能重新开辟一块儿内存，重新赋值
 
-    list02.append(50)
-    print(list02)
+    tup03 = (1, 2, 3, 4)
+    tup04 = tup03 + (5,)  # 看似改变了，只是创建了个新的
+    print(tup04)
 
-    # list tuple 均支持负数索引
-    print(list02[-1])
-    print(tuple03[-1])
+    list03 = [1, 2, 3, 4]
+    list03.append(5)  # 列表追加就很简单
+    print(list03)
 
-    # list tuple 均支持切片操作
-    print(list02[1:3])
-    print(tuple03[1:3])
+    # 与其他语言不同，支持负数索引 Java中支持不？
+    list05 = [1, 2, 3, 4]
+    print(list05[-1])
+    tup05 = (1, 2, 3, 4)
+    print(tup05[-1])
 
-    # list tuple 均可以任意嵌套
-    list03 = [[1, 2, 3], [4, 5]]
-    tuple04 = ((1, 2, 3), (4, 5))
+    # 都支持切片操作
+    list06 = [1, 2, 3, 4]
+    print(list06[1:3])
+    tup06 = (1, 2, 3, 4)
+    print(tup06[1:3])
 
-    # list tuple 两者可以转换
-    tuple05 = tuple(list03)
-    print(tuple05)
-    list04 = list(tuple05)
-    print(list04)
+    # 都可以随意嵌套
+    list07 = [[1, 2, 3], [4, 5]]
+    tup07 = ((1, 2, 3), (4, 5))
 
-    # list 常用的内置
-    list05 = [3, 2, 3, 7, 8, 1]
-    # list.count(item)  返回元素出现次数
-    print(list05.count(3))
-    # list.index(item)  返回元素第一次出现的索引
-    print(list05.index(3))
-    # list.reverse()    就地反转list
-    list05.reverse()
-    print(list05)
-    # list.sort()       就地排序list，升序
-    list05.sort()
-    print(list05)
+    # 两者可以通过list() tuple()函数互相转换
+    print(list((1, 2, 3)))
+    print(tuple([1, 2, 3]))
 
-    # tuple 常用内置
-    tuple06 = (3, 2, 3, 7, 8, 1)
-    # tuple.count(item) 返回元素出现次数
-    print(tuple06.count(3))
-    # tuple.index(item) 返回元素第一次出现的索引
-    print(tuple06.index(3))
-    # reversed(tuple)   返回反序排列的生成器
-    print(list(reversed(tuple06)))
-    # sorted(tuple)     返回升序排列的生成器
-    print(sorted(tuple06))
+    # 列表 元组常用的内置函数
+    list08 = [3, 2, 3, 7, 8, 1]
+    # 获取元素出现的个数
+    print(list08.count(3))
+    # 获取元素第一次出现的索引
+    print(list08.index(3))
+    # 反序排列
+    list08.reverse()    # 就地反转 元组没有
+    print(list(reversed(list08)))
+    # 升序排列
+    list08.sort()   # 就地升序 元组没有
+    print(sorted(list08))
+    # 降序排列
+    list08.sort(reverse=True)   # 就地降序
+    print(sorted(list08, reverse=True))
 
-    # 储存方式是不一样的
-    list06 = [1, 2, 3]
-    print(list06.__sizeof__())
-    tuple07 = (1, 2, 3)
-    print(tuple07.__sizeof__())
+    tup08 = (3, 2, 3, 7, 8, 1)
+    # 获取元素出现的次数
+    print(tup08.count(3))
+    # 获取元素第一次出现的索引
+    print(tup08.index(3))
+    # 元组反序排列
+    print(list(reversed(tup08)))
+    # 元组降序排列
+    print(sorted(tup08))
+    # 元组升序排列
+    print(sorted(tup08, reverse=True))
 
-    list07 = []
-    print(list07.__sizeof__())
-    list07.append(1)
-    print(list07.__sizeof__())
-    list07.append(2)
-    print(list07.__sizeof__())
-    list07.append(3)
-    print(list07.__sizeof__())
-    list07.append(4)
-    print(list07.__sizeof__())
-    list07.append(5)
-    print(list07.__sizeof__())
+    # 列表和元组存储方式不一样
+    list09 = [1, 2, 3]
+    print(list09.__sizeof__())
+    tup09 = (1, 2, 3)
+    print(tup09.__sizeof__())
 
-    # 初始化，list所需时间 > tuple
-    # 通过索引查询的话，速度几乎一样
+    list10 = []
+    print(list10.__sizeof__())
+    list10.append(1)
+    print(list10.__sizeof__())
+    list10.append(2)
+    print(list10.__sizeof__())
+    list10.append(3)
+    print(list10.__sizeof__())
+    list10.append(4)
+    print(list10.__sizeof__())
+    list10.append(5)
+    print(list10.__sizeof__())
+
+    # 如何选择：
+        # 不可变：元组
+        # 可变：列表
 
     """
-    使用场景：
-        如果储存的数据不变，那指定元组
-        如果储存的数据可变，那指定列表
-        
-    总结：
-        相同点：
-            都是有序的；都是可以储存任意数据类型的集合；
-        不同点：
-            列表动态，长度可变；  元组静态，不可变。
-            列表储存空间大；
-            元组性能更优。
+        都是有序的，可以存储任意类型的集合。
+    区别：
+        列表是动态的，长度可变，可增删改元素。存储空间大于元组，性能逊于元组。
+        元组是静态的，长度不可变，不可增删改元素。元组相对于列表轻量级，性能稍优。
     """
+
+
