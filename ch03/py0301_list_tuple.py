@@ -4,7 +4,7 @@
 
     不同点：
         列表：动态的，长度大小不固定，可以任意的增删修改元素 mutable
-        元组：静态的，长度大小固定，不可以增删改元素
+        元组：静态的，长度大小固定，不可以增删改元素 immutable
 """
 
 if __name__ == '__main__':
@@ -58,13 +58,13 @@ if __name__ == '__main__':
     # 获取元素第一次出现的索引
     print(list08.index(3))
     # 反序排列
-    list08.reverse()    # 就地反转 元组没有
+    list08.reverse()  # 就地反转 元组没有
     print(list(reversed(list08)))
     # 升序排列
-    list08.sort()   # 就地升序 元组没有
+    list08.sort()  # 就地升序 元组没有
     print(sorted(list08))
     # 降序排列
-    list08.sort(reverse=True)   # 就地降序
+    list08.sort(reverse=True)  # 就地降序
     print(sorted(list08, reverse=True))
 
     tup08 = (3, 2, 3, 7, 8, 1)
@@ -99,8 +99,8 @@ if __name__ == '__main__':
     print(list10.__sizeof__())
 
     # 如何选择：
-        # 不可变：元组
-        # 可变：列表
+    # 不可变：元组
+    # 可变：列表
 
     """
         都是有序的，可以存储任意类型的集合。
@@ -109,4 +109,6 @@ if __name__ == '__main__':
         元组是静态的，长度不可变，不可增删改元素。元组相对于列表轻量级，性能稍优。
     """
 
-
+    list11 = [1, 2, 3, 4]
+    list12 = [7, 8, 9]
+    print(list11 + list12)
