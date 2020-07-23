@@ -8,6 +8,30 @@
 
 测试执行速度：timeit.timeit('python script')
 """
+import time
+
+
+def find_product_price(products, product_id):
+    for id, price in products:
+        if id == product_id:
+            return price
+    return None
+
+
+def find_unique_price_using_list(products):
+    unique_price_list = []
+    for _, price in products:
+        if price not in unique_price_list:
+            unique_price_list.append(price)
+    return len(unique_price_list)
+
+
+def find_unique_price_using_set(products):
+    unique_price_set = set()
+    for _, price in products:
+        unique_price_set.add(price)
+    return len(unique_price_set)
+
 
 if __name__ == '__main__':
     # 字典的创建方式
@@ -70,3 +94,27 @@ if __name__ == '__main__':
 
     set05 = {3, 4, 2, 1}
     print(sorted(set05))
+
+    products_list = [(143121312, 100), (432314553, 30), (32421912367, 150)]
+    print('The price of product 432314553 is {}'.format(find_product_price(products_list, 432314553)))
+
+    products_dict = {143121312: 100, 432314553: 30, 32421912367: 150}
+    print('The price of product 432314553 is {}'.format(products_dict.get(432314553)))
+
+    print('number of unique price is {}'.format(find_unique_price_using_list(products_list)))
+
+    print('number of unique price is {}'.format(find_unique_price_using_set(products_list)))
+
+    id = [x for x in range(0, 10000)]
+    price = [x for x in range(20000, 30000)]
+    products = list(zip(id, price))
+
+    start_using_list = time.perf_counter()
+    find_unique_price_using_list(products)
+    end_using_list = time.perf_counter()
+    print('time elapse using list: {}'.format(end_using_list - start_using_list))
+
+    start_using_set = time.perf_counter()
+    find_unique_price_using_set(products)
+    end_using_set = time.perf_counter()
+    print('time elapse using set: {}'.format(end_using_set - start_using_set))
