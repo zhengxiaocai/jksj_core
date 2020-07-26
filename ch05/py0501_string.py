@@ -58,3 +58,23 @@ if __name__ == '__main__':
         list01.append(str(n))
     print(''.join(list01))
 
+    # str.split(mark)
+    path = 'hive://ads/training_table'
+    # 取ads
+    name_space = path.split('//')[1].split('/')[0]
+    print(name_space)
+    # 取training_table
+    table = path.split('//')[1].split('/')[1]
+    print(table)
+
+    # str.strip(mark)  str.lstrip(mark)  str.rstrip(mark)
+    s = ' my name is jason '
+    print(s.strip())
+
+    # str.find(sub, start, end)
+    print(s.find('name'))
+
+    # str.format()
+    print('no data available for person with id: {}, name: {}'.format('666', name))
+    # 之前的格式 %
+    print('no data available for person with id: %s, name: %s' % ('888', name))
