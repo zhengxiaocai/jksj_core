@@ -64,3 +64,43 @@ if __name__ == '__main__':
     """
     range()函数直接由C写成，速度特别快。
     """
+
+    # 将条件和循环并做一行 y = 2*|x| +5
+    x = [1, 2, 3, 4, -5]
+    y = [2 * value + 5 if value > 0 else -2 * value + 5 for value in x]
+    print(y)
+
+    # 将文件中逐行读取的一个完整语句，按逗号分割单词，去掉首位的空字符，
+    # 并过滤掉长度小于等于3的单词，最后返回由单词组成的列表
+    text = ' Today, is, Sunday'
+    text_list = [x.strip() for x in text.split(',') if len(x.strip()) > 3]
+    print(text_list)
+
+    # 这样的复用不仅仅局限于一个循环
+    # 给定两个列表x、y，要求返回x、y中所有元素对组成的元组，相等情况除外
+    result = [(xx, yy) for xx in x for yy in y if xx != yy]
+
+    attributes = ['name', 'dob', 'gender']
+    values = [['jason', '2000-01-01', 'male'],
+              ['mike', '1999-01-01', 'male'],
+              ['nancy', '2001-02-01', 'female']
+              ]
+
+    # expected output:
+    [{'name': 'jason', 'dob': '2000-01-01', 'gender': 'male'},
+     {'name': 'mike', 'dob': '1999-01-01', 'gender': 'male'},
+     {'name': 'nancy', 'dob': '2001-02-01', 'gender': 'female'}]
+
+    results = []
+    for value in values:
+        d = {}
+        for attr, v in zip(attributes, value):
+            d[attr] = v
+        results.append(d)
+    print(results)
+
+    results = [dict((attr, v) for attr, v in zip(attributes, value)) for value in values]
+    print(results)
+
+    results = [dict(zip(attributes, value)) for value in values]
+    print(results)
