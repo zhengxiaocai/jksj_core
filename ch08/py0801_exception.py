@@ -32,7 +32,7 @@ if __name__ == '__main__':
         f = open('file.txt', 'r')
     except OSError as e:
         print('Os Error: {}'.format(e))
-    except:
+    except Exception as e:
         print('Unexpect Error:', sys.exc_info()[0])
     finally:    # 无论如何都会执行
         f.close()
