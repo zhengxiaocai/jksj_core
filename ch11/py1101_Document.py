@@ -4,12 +4,16 @@ class Document:
         self.title = title
         self.author = author
         self.__context = context
+        self.page_num = 0
 
     def get_context_length(self):
         return len(self.__context)
 
     def intercept_context(self, length):
         self.__context = self.__context[:length]
+
+    def set_page_num(self, page_num):
+        self.page_num = page_num
 
 
 if __name__ == '__main__':
