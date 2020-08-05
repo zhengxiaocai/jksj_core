@@ -1,3 +1,11 @@
+"""
+知识点：
+1.类定义，没有继承关系的话 class Name:
+2.双下划线开头的是私有
+3.要定义实例属性，需要在__init__先声明下
+"""
+
+
 class Document:
     def __init__(self, title, author, context):
         print('init function called')

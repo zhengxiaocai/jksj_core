@@ -1,3 +1,12 @@
+"""
+知识点：
+1.类属性 直接在外边定义，变量名为全大写
+2.类函数 @classmethod(cls) 主要用cls创建不同的构造方法
+3.静态函数 @staticmethod() 操作跟实例没啥关系的东西
+4.类内用属性时，不能缺省self 类名
+"""
+
+
 class Document:
     WELCOME_STR = 'Welcome, The context for this book is {}'
 
