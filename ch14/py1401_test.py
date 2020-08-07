@@ -33,3 +33,15 @@ if __name__ == '__main__':
     print(id(d))
 
     print(c is d)
+
+    # >>TODO: 检查是否是None时，用is。
+    # >>TODO: is效率高于==，因为is不能被重载，执行is比较只是比较两个的id
+    # >>TODO: 执行a==b相当于 a.__eq__(b)一般都会重写eq方法，比如list会比较值和顺序
+
+    # >>TODO: 注意可变与不可变。
+    t1 = (1, 2, [3, 4])
+    t2 = (1, 2, [3, 4])
+    print(t1 == t2)
+
+    t1[-1].append(5)
+    print(t1 == t2)
